@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Services
+metadata:
+  name: portexpo
+spec:
+  type: ClusterIP
+  ports:
+    - targetPort: 80
+      port: 80
+  selector:
+     app: web
