@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress_rules
+spec:
+  rules:
+    - host: wear.my-online-store
+      http:
+        paths:
+        - backend:
+            serviceName: wear-service
+            servicePort: 80
+    - host: wear.my-online-store
+          http:
+            paths:
+            - backend:
+                serviceName: wear-service
+                servicePort: 80

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eps-convert-dp
+  labels:
+    service: Upload
+    app: epsconvert
+spec:
+  template:
+    metadata:
+      name: eps-convert-pods
+      labels:
+        service: Upload
+        app: epsconvert
+    spec:
+      containers:
+        - name: eps-convert-pods
+          image: 250921337649.dkr.ecr.eu-west-1.amazonaws.com/upload-converteps:latest
+          ports:
+            - containerPort : 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+  replicas: 6
+  selector:
+    matchLabels:
+      app: epsconvert
